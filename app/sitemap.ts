@@ -21,6 +21,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/blog/renovation-ai-quotation',
     '/blog/engineering-doc-automation',
     '/blog/insurance-team-crm-compare',
+    '/blog/site-foreman-ai-automation',
   ].map((route) => ({
     url: `${baseUrl}${route}`,
     lastModified: new Date(),

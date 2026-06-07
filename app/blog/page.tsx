@@ -3,6 +3,13 @@ import { FileText, ArrowRight, Clock } from "lucide-react";
 
 const blogPosts = [
   {
+    slug: "site-foreman-ai-automation",
+    title: "香港地盤管工如何利用 AI 減少實際工作量：從文書重災區到自動化轉型",
+    excerpt: "前地盤管工分享：如何利用 AI Agent 解決 Site Diary、工紙及收貨紙等繁瑣文書工作，搶回每天消失的 2 小時。",
+    date: "2026-06-12",
+    category: "實戰教學",
+  },
+  {
     slug: "start-sme-ai-automation",
     title: "香港中小企如何開始 AI 自動化？從核心痛點切入",
     excerpt: "探討中小企實現數碼化轉型的第一步，如何選擇高回報、低成本的 AI 自動化場景進行嘗試。",
