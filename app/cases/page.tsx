@@ -1,0 +1,80 @@
+import * as motion from "framer-motion/client";
+import { Building2, Shield, Rocket, ArrowRight, CheckCircle2 } from "lucide-react";
+
+const cases = [
+  {
+    slug: "construction-admin-automation",
+    company: "某大型建築工程公司",
+    title: "由 WhatsApp 紀錄到 AI 自動化管理：營運效率提升 600%",
+    result: "項目跟進時間由平均 3 天縮短至 5 分鐘",
+    icon: Building2,
+  },
+  {
+    slug: "insurance-team-crm",
+    company: "保險代理團隊 (50人)",
+    title: "AI 產品助理：秒查保單細節，顯著提升客戶滿意度",
+    result: "團隊每日節省 2 小時重複性諮詢時間",
+    icon: Shield,
+  },
+  {
+    slug: "renovation-quotation-ai",
+    company: "精品室內設計公司",
+    title: "AI 報價系統：自動核對物料與人工，搶先贏得訂單",
+    result: "報價生成速度由 3 日縮短至 3 分鐘",
+    icon: Rocket,
+  },
+];
+
+export default function CasesPage() {
+  return (
+    <main className="flex-grow px-5 py-24 sm:px-8 lg:px-12 bg-white">
+      <div className="mx-auto max-w-7xl">
+        <div className="text-center max-w-3xl mx-auto mb-20">
+          <p className="text-sm font-bold uppercase tracking-[0.3em] text-blue-600 mb-4">
+            Success Stories
+          </p>
+          <h1 className="text-4xl font-bold text-slate-900 sm:text-6xl">
+            成功案例
+          </h1>
+          <p className="mt-8 text-xl text-slate-500 leading-relaxed">
+            看 AI 如何在真實的香港中小企營運中創造價值，從繁瑣行政中解救老闆。
+          </p>
+        </div>
+
+        <div className="space-y-12">
+          {cases.map((item, index) => (
+            <motion.article
+              key={item.slug}
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: index * 0.1 }}
+              className="group grid overflow-hidden rounded-[2.5rem] border border-slate-100 bg-slate-50 transition hover:shadow-2xl hover:border-blue-100 md:grid-cols-[1fr_2fr]"
+            >
+              <div className="flex items-center justify-center bg-white p-16 relative overflow-hidden">
+                <div className="absolute inset-0 opacity-5 bg-tech-circuit" />
+                <item.icon size={80} className="text-blue-600 relative z-10 group-hover:scale-110 transition-transform duration-500" strokeWidth={1.5} />
+              </div>
+              <div className="flex flex-col justify-center p-10 sm:p-16">
+                <span className="text-sm font-bold text-blue-600 uppercase tracking-widest mb-4">{item.company}</span>
+                <h2 className="text-3xl font-bold text-slate-900 mb-8 leading-tight group-hover:text-blue-600 transition">
+                  <a href={`/cases/${item.slug}`}>{item.title}</a>
+                </h2>
+                <div className="inline-flex items-center gap-4 rounded-2xl bg-white px-6 py-4 border border-slate-100 shadow-sm mb-10">
+                  <CheckCircle2 size={24} className="text-blue-600" />
+                  <span className="text-lg font-bold text-slate-700">成果：{item.result}</span>
+                </div>
+                <a
+                  href={`/cases/${item.slug}`}
+                  className="inline-flex items-center gap-2 font-bold text-blue-600 group/link text-lg"
+                >
+                  查看詳細方案
+                  <ArrowRight size={20} className="transition-transform group-hover/link:translate-x-1" />
+                </a>
+              </div>
+            </motion.article>
+          ))}
+        </div>
+      </div>
+    </main>
+  );
+}
