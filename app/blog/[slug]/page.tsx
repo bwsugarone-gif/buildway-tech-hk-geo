@@ -21,7 +21,11 @@ import {
   Wallet,
   Clock3,
   BarChart3,
-  Zap
+  Zap,
+  TrendingUp,
+  Coins,
+  Cpu,
+  Link2
 } from "lucide-react";
 
 type Props = {
@@ -37,11 +41,12 @@ const blogData: Record<string, any> = {
     content: "探討中小企實現數碼化轉型的第一步，如何選擇高回報、低成本的 AI 自動化場景進行嘗試。",
   },
   "whatsapp-crm-value": {
-    title: "WhatsApp CRM 值不值得做？分析溝通與管理的投資回報",
+    title: "OCR + WhatsApp + CRM + MCP：香港中小企 AI 自動化實戰指南 (含 ROI 分析)",
     date: "2026-06-08",
     author: "Buildway AI Team",
-    category: "技術解讀",
-    content: "深入對比傳統管理與 AI 輔助的 WhatsApp CRM 系統，如何有效解決資料散亂與客戶跟進不力的問題。",
+    category: "實戰教學",
+    content: "這是一篇為老闆而寫的自動化指南：從一個 WhatsApp 查詢開始，展示 AI 如何串聯公司所有系統並帶來真實的回報。",
+    fullContent: true
   },
   "renovation-ai-quotation": {
     title: "裝修公司如何利用 AI 做報價？實現分鐘級準確報價的關鍵",
@@ -131,6 +136,16 @@ export default async function BlogPost({ params }: Props) {
         question: "現有的舊會計系統能接駁 AI 嗎？",
         answer: "可以。透過我們提供的 MCP (Model Context Protocol) 技術，AI 可以像人類一樣「讀取」並「寫入」您的現有 Excel 或舊版資料庫，無需您更換整套系統。"
       }
+    ],
+    "whatsapp-crm-value": [
+      {
+        question: "我的客戶資料放在 AI 系統安全嗎？",
+        answer: "安全性是 B2B 系統的底線。我們採用企業級加密與資料隔離技術，您的客戶資料與商業機密不會被用於訓練公共 AI 模型。同時，所有自動化流程均可設置「人工審核」關卡，確保發出的訊息 100% 準確。"
+      },
+      {
+        question: "如果我的 CRM 是舊版系統，還能對接嗎？",
+        answer: "這正是 MCP 技術的優勢。無論您的資料是在傳統資料庫、特定的 ERP 軟體還是多個 Excel 表格中，我們都能建立連接層，讓 AI 能夠即時調用這些數據。"
+      }
     ]
   };
 
@@ -191,7 +206,7 @@ export default async function BlogPost({ params }: Props) {
                 <div>
                    <p className="font-bold text-slate-900 text-lg">{post.author}</p>
                    <p className="text-sm text-slate-500">
-                     {post.author === "Buildway Tech 創辦人" ? "前地盤管工 & AI 自動化顧問" : "Buildway AI 策略顧問團隊"}
+                     {post.author === "Buildway Tech 創辦人" ? "前地盤管理 & AI 自動化顧問" : "Buildway AI 實戰專家團隊"}
                    </p>
                 </div>
               </div>
@@ -221,7 +236,7 @@ export default async function BlogPost({ params }: Props) {
                   <ul className="space-y-4">
                     <li><strong>工紙 (Time Sheets)：</strong>判頭工人幾點開工、有無 OT？月底核對簡直是災難。</li>
                     <li><strong>收貨紙 (Delivery Notes)：</strong>英泥、石矢、鋼筋幾時到？有無簽名？文件往往在地盤傳閱中遺失。</li>
-                    <li><strong>Site Diary (地盤日誌)：</strong>今日天氣、工序進度。往往要靠記憶力翻查 WhatsApp 群組來「作」一份。</li>
+                    <li><strong>Site Diary (地盤日誌)：</strong>今日天氣、工人人數、工序進度。往往要靠記憶力翻查 WhatsApp 群組來「作」一份。</li>
                     <li><strong>巡查紀錄 (Safety/QA)：</strong>發現缺陷，影相後要返去寫字樓整理成報告，最怕老闆突然查返三個月前嘅相。</li>
                   </ul>
 
@@ -366,7 +381,6 @@ export default async function BlogPost({ params }: Props) {
 
                   <h2 className="text-3xl font-bold text-slate-900 pt-8 border-t border-slate-100">10 個正在燃燒您時間的行政場景</h2>
 
-                  {/* Scene 1-10 Grid */}
                   <div className="grid gap-6">
                     {[
                       { title: "對數 (Account Settlement)", icon: Calculator, desc: "以前要逐張單對住銀行 Statement 入數；現在文員影張相，AI 自動比對金額與對帳單，異常自動提醒。" },
@@ -393,9 +407,6 @@ export default async function BlogPost({ params }: Props) {
                   </div>
 
                   <h2 className="text-3xl font-bold text-slate-900 pt-8 border-t border-slate-100">深度流程解析：以前 vs 現在 vs AI 協助</h2>
-                  <p>
-                    讓我們以最煩人的 **「收據與報銷」** 流程為例，看看 AI 究竟能省下多少時間：
-                  </p>
                   
                   <div className="overflow-hidden rounded-[2rem] border border-slate-200 bg-slate-50 shadow-inner">
                     <div className="grid md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-slate-200">
@@ -425,25 +436,125 @@ export default async function BlogPost({ params }: Props) {
                       </div>
                     </div>
                   </div>
+                </>
+              )}
 
-                  <h2 className="text-3xl font-bold text-slate-900 pt-8 border-t border-slate-100">總結：不要讓行政雜務限制了您的公司成長</h2>
+              {slug === "whatsapp-crm-value" && (
+                <>
+                  <section className="bg-blue-50/50 p-10 rounded-[2.5rem] border border-blue-100 relative overflow-hidden">
+                    <div className="absolute top-0 right-0 p-6 opacity-10">
+                      <MessageSquare size={120} className="text-blue-600" />
+                    </div>
+                    <p className="text-blue-600 font-bold uppercase tracking-widest mb-4">Automation Case Study</p>
+                    <h2 className="text-3xl font-bold text-slate-900 mb-6">當您的客戶在 WhatsApp 傳來一張照片...</h2>
+                    <p className="text-xl text-slate-600 leading-relaxed">
+                      這不是科幻小說，而是 Buildway Tech 正在為香港中小企落地的真實場景。想像一下，客戶拍下一個零件或一份手稿，您的 AI 助理能在 10 秒內給出專業回覆。
+                    </p>
+                  </section>
+
+                  <h2 className="text-3xl font-bold text-slate-900 pt-8 border-t border-slate-100">一、實戰場景：從「相片」到「即時報價」</h2>
                   <p>
-                    每一分鐘花在「手動打字」上的時間，都是原本可以用來思考策略的時間。AI 數碼化不是要買最先進的科技，而是要用最聰明的方法，把老闆從這些瑣事中解放出來。
+                    假設您經營一家維修工程公司。客戶傳來一張「壞了的冷氣機零件」照片，問：「有無呢隻料？幾錢？」
+                  </p>
+
+                  <div className="overflow-hidden rounded-[2rem] border border-slate-200 bg-slate-50 shadow-inner my-12">
+                    <div className="grid md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-slate-200">
+                      <div className="p-8">
+                        <h4 className="font-bold text-slate-500 uppercase tracking-widest mb-6 text-sm">以前 (純人手)</h4>
+                        <ul className="space-y-4 text-sm font-medium">
+                          <li className="flex gap-2"><span className="text-red-500">✗</span> 文員收到相，唔識分型號</li>
+                          <li className="flex gap-2"><span className="text-red-500">✗</span> 傳給師傅，師傅忙緊未睇</li>
+                          <li className="flex gap-2"><span className="text-red-500">✗</span> 4 小時後才回覆，客已找別家</li>
+                        </ul>
+                      </div>
+                      <div className="p-8 bg-white">
+                        <h4 className="font-bold text-blue-600 uppercase tracking-widest mb-6 text-sm">現在 (半數碼化)</h4>
+                        <ul className="space-y-4 text-sm font-medium">
+                          <li className="flex gap-2"><span>!</span> 影相傳入公司群組</li>
+                          <li className="flex gap-2"><span>!</span> 文員翻查舊 Excel 報價表</li>
+                          <li className="flex gap-2"><span>!</span> 1 小時後回覆，依然太慢</li>
+                        </ul>
+                      </div>
+                      <div className="p-8 bg-blue-600 text-white">
+                        <h4 className="font-bold text-blue-100 uppercase tracking-widest mb-6 text-sm">AI 自動化協助</h4>
+                        <ul className="space-y-4 text-sm font-medium">
+                          <li className="flex gap-2"><span className="text-green-300">✓</span> AI 自動辨識照片中零件型號</li>
+                          <li className="flex gap-2"><span className="text-green-300">✓</span> 自動連線公司庫存與成本庫</li>
+                          <li className="flex gap-2"><span className="text-green-300">✓</span> 10 秒內草擬回覆，老闆只需確認</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+
+                  <h2 className="text-3xl font-bold text-slate-900 pt-8 border-t border-slate-100">二、背後的技術英雄 (老闆易明版)</h2>
+                  <p>
+                    您不需要懂編程，但了解這五個角色能幫您更好地指揮 AI：
+                  </p>
+                  <div className="grid gap-6 md:grid-cols-2">
+                    <div className="p-8 rounded-3xl border border-slate-100 bg-white shadow-sm">
+                       <Search size={32} className="text-blue-600 mb-4" />
+                       <h4 className="text-xl font-bold text-slate-900 mb-2">OCR (讀圖高手)</h4>
+                       <p className="text-slate-500">負責「睇」相片同文件，將手寫字或產品型號轉化為電腦讀得明的文字。</p>
+                    </div>
+                    <div className="p-8 rounded-3xl border border-slate-100 bg-white shadow-sm">
+                       <Users size={32} className="text-blue-600 mb-4" />
+                       <h4 className="text-xl font-bold text-slate-900 mb-2">CRM (記性最好的秘書)</h4>
+                       <p className="text-slate-500">儲存所有客戶歷史。AI 會查返：「呢位客上次買左咩？有無特別折扣？」</p>
+                    </div>
+                    <div className="p-8 rounded-3xl border border-slate-100 bg-white shadow-sm">
+                       <Link2 size={32} className="text-blue-600 mb-4" />
+                       <h4 className="text-xl font-bold text-slate-900 mb-2">MCP (萬能插頭)</h4>
+                       <p className="text-slate-500">橋樑技術，讓 AI 能夠即時查閱您的 Excel、庫存軟體或舊系統，唔使搬資料。</p>
+                    </div>
+                    <div className="p-8 rounded-3xl border border-slate-100 bg-white shadow-sm">
+                       <Cpu size={32} className="text-blue-600 mb-4" />
+                       <h4 className="text-xl font-bold text-slate-900 mb-2">AI Agent (全能助理)</h4>
+                       <p className="text-slate-500">大腦角色。它決定：先用 OCR 睇圖，再經 MCP 查庫存，最後在 WhatsApp 回覆。</p>
+                    </div>
+                  </div>
+
+                  <h2 className="text-3xl font-bold text-slate-900 pt-8 border-t border-slate-100">三、真實 ROI 分析：這是一筆投資還是開支？</h2>
+                  <p>
+                    很多老闆擔心「高科技很貴」。但當我們計算完人工成本後，結論往往相反。
+                  </p>
+                  <div className="bg-slate-900 rounded-[2.5rem] p-10 text-white shadow-2xl relative overflow-hidden">
+                    <div className="absolute inset-0 bg-tech-grid opacity-10" />
+                    <div className="relative z-10 grid gap-12 md:grid-cols-2">
+                       <div className="space-y-6">
+                          <h4 className="text-2xl font-bold flex items-center gap-2"><TrendingUp className="text-green-400" /> 效率數據 (SME 估算)</h4>
+                          <ul className="space-y-4 opacity-90 text-lg">
+                             <li className="flex justify-between"><span>每日節省時間：</span> <span className="font-bold text-green-400">2.5 小時</span></li>
+                             <li className="flex justify-between"><span>每月節省時間：</span> <span className="font-bold text-green-400">55 小時</span></li>
+                             <li className="flex justify-between"><span>人工成本估算：</span> <span className="font-bold text-green-400">HK$100 - $250 / hr</span></li>
+                             <li className="flex justify-between"><span>每月隱形節省：</span> <span className="font-bold text-green-400">HK$5,500 - $13,750</span></li>
+                          </ul>
+                       </div>
+                       <div className="p-8 rounded-3xl bg-white/10 border border-white/20 flex flex-col justify-center text-center">
+                          <p className="text-blue-300 font-bold uppercase tracking-widest mb-4">Payback Period</p>
+                          <p className="text-5xl font-extrabold mb-4">4 - 7 個月</p>
+                          <p className="text-lg opacity-80 font-medium italic">「不到半年，系統節省的人工與時間即可抵消開發成本。」</p>
+                       </div>
+                    </div>
+                  </div>
+
+                  <h2 className="text-3xl font-bold text-slate-900 pt-8 border-t border-slate-100">結論：給決策者的話</h2>
+                  <p>
+                    AI 自動化的真正價值，不在於取代您的員工，而是讓您的精英員工不再做「文員工作」。當您的響應速度從「小時」變為「秒」時，您的競爭對手已經不在同一個維度。
                   </p>
 
                   <div className="bg-blue-600 rounded-[2.5rem] p-12 text-white my-20 text-center shadow-2xl relative overflow-hidden">
                     <div className="absolute inset-0 bg-tech-circuit opacity-10" />
                     <div className="relative z-10">
-                       <h3 className="text-3xl font-bold mb-6">準備好找回您每天「失蹤」的 2 小時嗎？</h3>
+                       <h3 className="text-3xl font-bold mb-6">想看這套系統如何應用在您的行業？</h3>
                        <p className="text-xl mb-10 opacity-90">
-                         我們的顧問會針對您的現有流程，提供一份「行政提效」建議方案。
+                         我們的顧問可以為您展示真實的「相片到對答」自動化流程。
                        </p>
                        <div className="flex flex-col sm:flex-row justify-center gap-4">
                          <a href="/#assessment" className="rounded-full bg-white text-blue-600 px-10 py-4 font-bold hover:bg-slate-100 transition shadow-xl">
-                           獲取行政自動化建議
+                           開始免費 ROI 評估
                          </a>
                          <a href="https://wa.me/85212345678" className="rounded-full bg-slate-900 px-10 py-4 font-bold transition hover:bg-slate-800 flex items-center justify-center gap-2">
-                           <MessageSquare size={20} /> WhatsApp 快速查詢
+                           <MessageSquare size={20} /> 獲取方案細節
                          </a>
                        </div>
                     </div>
@@ -453,7 +564,7 @@ export default async function BlogPost({ params }: Props) {
                   <div className="space-y-8 pt-12 border-t border-slate-100">
                     <h3 className="text-3xl font-bold text-slate-900">常見問題 (FAQ)</h3>
                     <div className="grid gap-6">
-                       {faqDataMap["sme-boss-time-waste"].map((f, i) => (
+                       {faqDataMap["whatsapp-crm-value"].map((f, i) => (
                          <div key={i} className="p-8 rounded-3xl border border-slate-100 bg-slate-50">
                             <h4 className="font-bold text-slate-900 mb-3 text-lg">Q: {f.question}</h4>
                             <p>{f.answer}</p>
