@@ -201,15 +201,27 @@ export default async function BlogPost({ params }: Props) {
                   {/* Scenario 2 */}
                   <div className="bg-white rounded-3xl border border-slate-200 p-8 shadow-sm">
                     <h3 className="text-2xl font-bold text-slate-900 mb-6 flex items-center gap-3">
-                      <History className="text-blue-600" /> 場景 2：找回「消失」的收貨紀錄
+                      <History className="text-blue-600" /> 場景 2：找回「消失」的紀錄
                     </h3>
+                    <p className="mb-4">
+                      呢類問題通常唔會預早通知你，好多時老闆係突然問：
+                    </p>
+                    <ul className="bg-slate-50 rounded-2xl p-6 border border-slate-100 mb-6 space-y-2 italic text-slate-700">
+                      <li>「上個月果倉石矢幾時落？」</li>
+                      <li>「石矢期夠未？」</li>
+                      <li>「磚仔幾時送去 Lab？」</li>
+                      <li>「試壓報告出咗未？」</li>
+                      <li>「幾時可以拆板？」</li>
+                      <li>「A座17樓防水有冇影相記錄？」</li>
+                      <li>「上星期落雨停工有冇證明？」</li>
+                    </ul>
                     <p className="mb-6">
-                      老闆突然問：「三個月前嗰批鋼筋幾時到？當時有無影相？收貨紙喺邊？」以前管工要翻轉成個 WhatsApp 同相簿，甚至去櫃桶搵紙本。
+                      於是管工又要翻 WhatsApp、翻相簿、翻收貨紙、翻 Site Diary、翻試壓報告、翻施工記錄。有時搵資料用嘅時間，仲多過做工程本身。
                     </p>
                     <div className="bg-blue-50 rounded-2xl p-6 border border-blue-100">
                       <p className="font-bold text-blue-900 mb-2">AI 協助方式：</p>
                       <p className="text-blue-800">
-                        AI 會將所有 WhatsApp 傳過的收貨紙自動分類。您只需用對話問 AI：「搵返三個月前 A 地盤所有鋼筋收貨紀錄」，相片、時間、簽名位即時出現。
+                        AI 會將所有傳過嘅相、語音、收貨紙自動打 Tag 分類。您只需用對話問 AI：「搵返 A 座 17 樓防水相」或者「查返 A1 倉落石矢時間」，資料、時間、地點紀錄即時出現，唔使再翻幾個月前嘅 WhatsApp 紀錄。
                       </p>
                     </div>
                   </div>
