@@ -63,26 +63,26 @@ export const metadata: Metadata = {
 };
 
 const resultCards = [
-  { title: "每日慳返 2-4 小時", icon: Timer, desc: "自動化重複行政工作，讓老闆專注業務發展。", pattern: "bg-tech-grid" },
-  { title: "報價速度提升 5 倍", icon: Zap, desc: "AI 助理秒速生成初步報價，搶先贏得客戶。", pattern: "bg-tech-circuit" },
-  { title: "WhatsApp 自動回覆", icon: MessageSquare, desc: "24/7 AI 客服處理查詢，不漏掉任何潛在生意。", pattern: "bg-tech-network" },
-  { title: "文件集中管理", icon: Database, desc: "所有合約、收據自動歸檔，隨時隨地一搜即得。", pattern: "bg-tech-flow" },
-  { title: "減少人手出錯", icon: ShieldCheck, desc: "由 AI 處理計算與比對，避免人為疏忽導致損失。", pattern: "bg-tech-circuit" },
-  { title: "老闆即時掌握數據", icon: BarChart3, desc: "Dashboard 一眼睇晒營運指標，決策更有根據。", pattern: "bg-tech-grid" },
+  { title: "優化行政工序", icon: Timer, desc: "透過自動化流程減少重複性勞動，將核心資源投放於業務擴張。", pattern: "bg-tech-grid" },
+  { title: "提速報價響應", icon: Zap, desc: "整合歷史數據與成本庫，顯著縮短客戶初步報價的等待週期。", pattern: "bg-tech-circuit" },
+  { title: "智能客戶互動", icon: MessageSquare, desc: "利用 AI 助理優化 WhatsApp 溝通，確保所有查詢均獲得即時且專業的回覆。", pattern: "bg-tech-network" },
+  { title: "企業資產數碼化", icon: Database, desc: "系統化整理文件、合約與對話紀錄，將散亂數據轉化為可搜尋的知識資產。", pattern: "bg-tech-flow" },
+  { title: "提升營運精確度", icon: ShieldCheck, desc: "由 AI 輔助數據核對與計算，有效降低人為疏忽導致的行政風險。", pattern: "bg-tech-circuit" },
+  { title: "即時數據決策", icon: BarChart3, desc: "透過視覺化 Dashboard 即時掌握公司關鍵指標，讓管理決策更具數據支撐。", pattern: "bg-tech-grid" },
 ];
 
 const serviceCards = [
-  { title: "AI 報價助理", icon: Zap, desc: "過往資料整理成模型，快速生成精準報價單。", pattern: "bg-tech-circuit" },
-  { title: "AI 客戶跟進", icon: Users, desc: "自動提醒與紀錄客戶狀態，提升轉化率與服務感。", pattern: "bg-tech-network" },
-  { title: "AI 文件整理", icon: Search, desc: "自動分類 PDF 與相片，把紙張資料數碼化存檔。", pattern: "bg-tech-flow" },
-  { title: "AI 出糧系統", icon: Coins, desc: "自動核對工紙、OT 與強積金，簡化後勤流程。", pattern: "bg-tech-grid" },
-  { title: "公司資料中心", icon: Database, desc: "集中管理項目與客戶資料，告別 Excel 與散亂對話。", pattern: "bg-tech-network" },
-  { title: "老闆 Dashboard", icon: LayoutDashboard, desc: "將複雜數據視覺化，助您掌握公司健康狀況。", pattern: "bg-tech-grid" },
+  { title: "AI 報價助理", icon: Zap, desc: "整合企業歷史數據，開發專屬的自動化初步報價系統。", pattern: "bg-tech-circuit" },
+  { title: "AI 客戶關係管理", icon: Users, desc: "自動化客戶狀態跟進與提醒，建立更緊密的長期客戶關係。", pattern: "bg-tech-network" },
+  { title: "AI 文檔處理系統", icon: Search, desc: "利用 OCR 與語義分析技術，實現 PDF 與圖像資料的高效歸檔。", pattern: "bg-tech-flow" },
+  { title: "AI 行政自動化", icon: Coins, desc: "優化出勤紀錄、工紙核對等繁瑣流程，提升後勤穩定性。", pattern: "bg-tech-grid" },
+  { title: "企業資料中心", icon: Database, desc: "構建集中的數據管理架構，打破不同溝通工具間的資訊孤島。", pattern: "bg-tech-network" },
+  { title: "決策支援系統", icon: LayoutDashboard, desc: "為管理層量身定制營運看板，實時透視業務健康狀況。", pattern: "bg-tech-grid" },
 ];
 
 const cases = [
-  { company: "裝修工程公司", title: "由 WhatsApp 紀錄到 AI 自動報價", result: "報價時間由 3 日縮短至 5 分鐘" },
-  { company: "保險代理團隊", title: "AI 產品助理：秒查保單細節", result: "團隊每日節省 2 小時查閱時間" },
+  { slug: "construction-admin-automation", company: "Buildway Tech POC - 建築工程", title: "由 WhatsApp 紀錄到 AI 自動化管理：技術可行性驗證", result: "成功實現項目資料自動分類與歸檔" },
+  { slug: "insurance-team-crm", company: "內部測試案例 - 保險團隊", title: "AI 產品助理：大幅提升保單細節查詢效率", result: "顯著減少人工翻查文件時間" },
 ];
 
 const organizationSchema = {

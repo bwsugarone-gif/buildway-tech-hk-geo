@@ -3,25 +3,39 @@ import { FileText, ArrowRight, Clock } from "lucide-react";
 
 const blogPosts = [
   {
-    slug: "sme-ai-automation-2026",
-    title: "2026 年香港中小企 AI 自動化指南：從 WhatsApp 開始",
-    excerpt: "探討如何利用企業級 AI 助理優化 WhatsApp 溝通，在不編寫程式碼的情況下將行政效率提升 50% 以上。",
-    date: "2026-06-05",
+    slug: "start-sme-ai-automation",
+    title: "香港中小企如何開始 AI 自動化？從核心痛點切入",
+    excerpt: "探討中小企實現數碼化轉型的第一步，如何選擇高回報、低成本的 AI 自動化場景進行嘗試。",
+    date: "2026-06-10",
     category: "行業趨勢",
   },
   {
-    slug: "whatsapp-ai-crm",
-    title: "WhatsApp 結合 AI CRM：中小企如何實現客戶自動跟進？",
-    excerpt: "深入分析 AI 如何透過 WhatsApp 進行即時查詢與智能分析，建立無縫的客戶關係管理系統。",
-    date: "2026-06-01",
+    slug: "whatsapp-crm-value",
+    title: "WhatsApp CRM 值不值得做？分析溝通與管理的投資回報",
+    excerpt: "深入對比傳統管理與 AI 輔助的 WhatsApp CRM 系統，如何有效解決資料散亂與客戶跟進不力的問題。",
+    date: "2026-06-08",
     category: "技術解讀",
   },
   {
-    slug: "ai-document-automation",
-    title: "告別紙張辦公：中小企如何利用 AI 實現文件自動化整理？",
-    excerpt: "實戰教學：透過 AI 整合 PDF、收據與合約數據，大幅減少人手輸入時間與錯誤率。",
-    date: "2026-05-28",
+    slug: "renovation-ai-quotation",
+    title: "裝修公司如何利用 AI 做報價？實現分鐘級準確報價的關鍵",
+    excerpt: "分享室內設計與裝修工程如何整合歷史成本庫，利用 AI 助理快速生成專業初步報價單。",
+    date: "2026-06-05",
     category: "實戰教學",
+  },
+  {
+    slug: "engineering-doc-automation",
+    title: "工程公司文件管理自動化：從紙張到 AI 智能檢索的轉型路徑",
+    excerpt: "探討地盤文件、合約與工紙如何透過 OCR 與 RAG 技術轉化為可搜尋、可分析的企業知識資產。",
+    date: "2026-06-02",
+    category: "實戰教學",
+  },
+  {
+    slug: "insurance-team-crm-compare",
+    title: "保險代理團隊 CRM 系統比較：為什麼通用型工具不再足夠？",
+    excerpt: "分析保險團隊在跟進客戶時的獨特需求，以及 AI 助理在保單細節查詢與自動化排程中的優勢。",
+    date: "2026-05-30",
+    category: "行業趨勢",
   },
 ];
 

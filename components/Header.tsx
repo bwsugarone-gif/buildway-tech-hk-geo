@@ -11,6 +11,7 @@ const navLinks = [
   { href: "/#services", label: "服務方案" },
   { href: "/cases", label: "成功案例" },
   { href: "/blog", label: "AI 專欄" },
+  { href: "/about", label: "關於我" },
 ];
 
 export default function Header() {

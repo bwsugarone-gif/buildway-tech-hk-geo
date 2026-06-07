@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import WhatsAppCTA from "../components/WhatsAppCTA";
 
 const companyName = "Buildway Tech (HK) Limited";
 
@@ -27,6 +28,7 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col bg-slate-50">
         <Header />
         <div className="flex-grow">{children}</div>
+        <WhatsAppCTA />
         <Footer />
       </body>
     </html>

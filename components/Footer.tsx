@@ -15,10 +15,10 @@ const sitemap = [
   {
     title: "探索更多",
     links: [
+      { label: "關於我們", href: "/about" },
       { label: "成功案例", href: "/cases" },
       { label: "AI 專欄文章", href: "/blog" },
       { label: "常見問題", href: "/#faq" },
-      { label: "免費 AI 評估", href: "/#assessment" },
     ],
   },
   {
@@ -26,7 +26,7 @@ const sitemap = [
     links: [
       { label: "電郵諮詢", href: "mailto:hello@buildway.tech" },
       { label: "WhatsApp 預約", href: "https://wa.me/85212345678" },
-      { label: "關於我們", href: "/#contact" },
+      { label: "免費 AI 評估", href: "/#assessment" },
     ],
   },
 ];

@@ -7,6 +7,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '',
     '/blog',
     '/cases',
+    '/about',
   ].map((route) => ({
     url: `${baseUrl}${route}`,
     lastModified: new Date(),
@@ -15,9 +16,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
   }));
 
   const blogRoutes = [
-    '/blog/sme-ai-automation-2026',
-    '/blog/whatsapp-ai-crm',
-    '/blog/ai-document-automation',
+    '/blog/start-sme-ai-automation',
+    '/blog/whatsapp-crm-value',
+    '/blog/renovation-ai-quotation',
+    '/blog/engineering-doc-automation',
+    '/blog/insurance-team-crm-compare',
   ].map((route) => ({
     url: `${baseUrl}${route}`,
     lastModified: new Date(),

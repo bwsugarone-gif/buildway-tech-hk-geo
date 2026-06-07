@@ -8,28 +8,28 @@ type Props = {
 
 const caseData: Record<string, any> = {
   "construction-admin-automation": {
-    company: "某大型建築工程公司",
-    title: "由 WhatsApp 紀錄到 AI 自動化管理：營運效率提升 600%",
-    result: "項目跟進時間由平均 3 天縮短至 5 分鐘",
+    company: "Buildway Tech POC - 建築工程",
+    title: "由 WhatsApp 紀錄到 AI 自動化管理：技術可行性驗證",
+    result: "成功實現項目資料自動分類與歸檔",
     industry: "建築工程",
-    challenge: "過往依靠人手翻查 WhatsApp 對話與 Excel 成本表，導致跟進週期長且容易出錯。",
-    solution: "建立企業級 AI 助理，自動提取歷史數據並生成即時進度報告與分析。",
+    challenge: "過往依靠人手翻查 WhatsApp 對話與 Excel 成本表，資料管理效率低下且易出錯。",
+    solution: "建立企業級 AI 助理測試原型，自動提取對話中的關鍵數據並生成進度報告。",
   },
   "insurance-team-crm": {
-    company: "保險代理團隊 (50人)",
-    title: "AI 產品助理：秒查保單細節，顯著提升客戶滿意度",
-    result: "團隊每日節省 2 小時重複性諮詢時間",
+    company: "內部測試案例 - 保險團隊",
+    title: "AI 產品助理：大幅提升保單細節查詢效率",
+    result: "顯著減少人工翻查文件時間",
     industry: "保險理財",
-    challenge: "產品條款繁瑣，新員工難以快速準確回覆客戶查詢，影響服務專業度。",
-    solution: "建立團隊共享 AI 知識庫，透過 WhatsApp 實現秒級條款查詢。",
+    challenge: "產品條款繁瑣，團隊成員難以快速準確回覆複雜的查詢，影響服務專業度。",
+    solution: "建立團隊共享 AI 知識庫測試環境，透過 RAG 技術實現語義級別的條款查詢。",
   },
   "renovation-quotation-ai": {
-    company: "精品室內設計公司",
-    title: "AI 報價系統：自動核對物料與人工，搶先贏得訂單",
-    result: "報價生成速度由 3 日縮短至 3 分鐘",
-    industry: "室內設計",
-    challenge: "報價過程繁複，需人手計算大量物料價格，容易流失時效敏感的客戶。",
-    solution: "導入 AI 報價助理，自動化核對成本庫並生成標準化報價單。",
+    company: "Buildway Tech POC - 室內設計",
+    title: "AI 報價系統：自動核對物料數據測試",
+    result: "初步實現報價流程半自動化",
+    industry: "室室內設計",
+    challenge: "報價過程繁複，需人手核對大量變動的物料價格，耗費大量行政時間。",
+    solution: "開發 AI 報價助理 POC，自動化連結成本資料庫並草擬標準化報價單。",
   }
 };
 

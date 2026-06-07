@@ -4,23 +4,23 @@ import { Building2, Shield, Rocket, ArrowRight, CheckCircle2 } from "lucide-reac
 const cases = [
   {
     slug: "construction-admin-automation",
-    company: "某大型建築工程公司",
-    title: "由 WhatsApp 紀錄到 AI 自動化管理：營運效率提升 600%",
-    result: "項目跟進時間由平均 3 天縮短至 5 分鐘",
+    company: "Buildway Tech POC - 建築工程",
+    title: "由 WhatsApp 紀錄到 AI 自動化管理：技術可行性驗證",
+    result: "成功實現項目資料自動分類與歸檔",
     icon: Building2,
   },
   {
     slug: "insurance-team-crm",
-    company: "保險代理團隊 (50人)",
-    title: "AI 產品助理：秒查保單細節，顯著提升客戶滿意度",
-    result: "團隊每日節省 2 小時重複性諮詢時間",
+    company: "內部測試案例 - 保險團隊",
+    title: "AI 產品助理：大幅提升保單細節查詢效率",
+    result: "顯著減少人工翻查文件時間",
     icon: Shield,
   },
   {
     slug: "renovation-quotation-ai",
-    company: "精品室內設計公司",
-    title: "AI 報價系統：自動核對物料與人工，搶先贏得訂單",
-    result: "報價生成速度由 3 日縮短至 3 分鐘",
+    company: "Buildway Tech POC - 室內設計",
+    title: "AI 報價系統：自動核對物料數據測試",
+    result: "初步實現報價流程半自動化",
     icon: Rocket,
   },
 ];
