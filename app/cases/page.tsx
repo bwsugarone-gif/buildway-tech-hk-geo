@@ -3,25 +3,25 @@ import { Building2, Shield, Rocket, ArrowRight, CheckCircle2 } from "lucide-reac
 
 const cases = [
   {
-    slug: "construction-admin-automation",
-    company: "Buildway Tech POC - 建築工程",
-    title: "由 WhatsApp 紀錄到 AI 自動化管理：技術可行性驗證",
-    result: "成功實現項目資料自動分類與歸檔",
+    slug: "poc-doc-search",
+    company: "Buildway Tech Internal POC",
+    title: "POC Case 1：工程文件語義搜尋系統",
+    result: "成功實現跨項目、跨格式的精確資料檢索",
     icon: Building2,
   },
   {
-    slug: "insurance-team-crm",
-    company: "內部測試案例 - 保險團隊",
-    title: "AI 產品助理：大幅提升保單細節查詢效率",
-    result: "顯著減少人工翻查文件時間",
-    icon: Shield,
+    slug: "poc-quotation-assistant",
+    company: "Buildway Tech Internal POC",
+    title: "POC Case 2：WhatsApp 報價助理",
+    result: "初步驗證「對話即報價」的自動化流轉",
+    icon: Rocket,
   },
   {
-    slug: "renovation-quotation-ai",
-    company: "Buildway Tech POC - 室內設計",
-    title: "AI 報價系統：自動核對物料數據測試",
-    result: "初步實現報價流程半自動化",
-    icon: Rocket,
+    slug: "poc-site-diary",
+    company: "Buildway Tech Internal POC",
+    title: "POC Case 3：Site Diary 自動化助手",
+    result: "成功將地盤日誌記錄時間縮短 80%",
+    icon: Shield,
   },
 ];
 

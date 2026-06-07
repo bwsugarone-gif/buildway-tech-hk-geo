@@ -30,9 +30,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
   }));
 
   const caseRoutes = [
-    '/cases/construction-admin-automation',
-    '/cases/insurance-team-crm',
-    '/cases/renovation-quotation-ai',
+    '/cases/poc-doc-search',
+    '/cases/poc-quotation-assistant',
+    '/cases/poc-site-diary',
   ].map((route) => ({
     url: `${baseUrl}${route}`,
     lastModified: new Date(),
