@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import * as motion from "framer-motion/client";
 import AssessmentForm from "../components/AssessmentForm";
+import DemoGallery from "../components/DemoGallery";
 import { 
   Timer, 
   Zap, 
@@ -12,9 +13,9 @@ import {
   LayoutDashboard,
   Coins,
   Users,
-  ArrowRight
+  ArrowRight,
+  Bot
 } from "lucide-react";
-
 const companyName = "Buildway Tech (HK) Limited";
 const siteUrl = "http://localhost:3000";
 const siteTitle =
