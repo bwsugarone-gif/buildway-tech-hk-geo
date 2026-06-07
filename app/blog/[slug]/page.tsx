@@ -30,7 +30,11 @@ import {
   HardHat,
   FileWarning,
   Box,
-  Image as ImageIcon
+  Image as ImageIcon,
+  Workflow,
+  Database,
+  Layers,
+  MessagesSquare
 } from "lucide-react";
 
 type Props = {
@@ -89,6 +93,14 @@ const blogData: Record<string, any> = {
     author: "Buildway AI Team",
     category: "戰略分析",
     content: "這篇文章深入探討香港中小企老闆在行政雜務上的隱形成本，並展示 AI 如何透過 10 個真實場景解放老闆的時間。",
+    fullContent: true
+  },
+  "hk-engineering-erp-chaos": {
+    title: "香港工程公司為什麼導入 ERP 後仍然一團亂？RAG、AI Agent 與 ERP 的真正分工",
+    date: "2026-06-18",
+    author: "Buildway AI Team",
+    category: "核心觀點",
+    content: "深入分析為什麼傳統 ERP 難以解決工程界的混亂，並提出「ERP (帳簿) + RAG (記憶) + AI Agent (員工)」的全新數碼化世界觀。",
     fullContent: true
   }
 };
@@ -161,6 +173,16 @@ export default async function BlogPost({ params }: Props) {
       {
         question: "舊圖紙與手寫紀錄也能辨識嗎？",
         answer: "是的。我們採用高精度的工程專用 OCR 模型，能辨識圖紙上的標註、蓋章，以及地盤巡查表上的手寫簽名與備註，將這些「死數據」激活成可搜尋的資產。"
+      }
+    ],
+    "hk-engineering-erp-chaos": [
+      {
+        question: "我現有的 ERP 很難用，AI 真的能幫到忙嗎？",
+        answer: "AI 不是要取代您的 ERP，而是為它加裝一個「智能大腦」。您可以直接在 WhatsApp 用對話的方式查詢或輸入資料，AI 會自動處理後台複雜的 ERP 錄入邏輯。"
+      },
+      {
+        question: "RAG 與傳統的文件搜尋有什麼不同？",
+        answer: "傳統搜尋只能找「關鍵字」，而 RAG 能理解「意思」。例如您問「VO 的爭議點在哪？」，RAG 能總結多份文件與 WhatsApp 記錄，直接給您分析結果，而不是給您一堆 PDF 文件。"
       }
     ]
   };
@@ -240,11 +262,9 @@ export default async function BlogPost({ params }: Props) {
                       「當我仲做緊地盤管工嗰陣，每日最辛苦嘅唔係巡地盤，而係夜晚返去寫字樓對住嗰疊山咁高嘅工紙同收貨紙。我就喺嗰陣諗，點解 2026 年仲要用人手做呢啲野？」
                     </p>
                   </section>
-
                   <p>
                     在香港做建築工程，管工（Foreman）的工作往往被無窮無盡的「文書作業」所綁架。每日收工後，你是否還在貨櫃辦公室裡，對著判頭交來的模糊 WhatsApp 照片逐一輸入 Excel？這篇文章不談深奧科技，只談如何用 AI 幫你「收工」。
                   </p>
-
                   <h2 className="text-3xl font-bold text-slate-900 pt-8 border-t border-slate-100">一、地盤文書的「四大重災區」</h2>
                   <p>
                     為什麼地盤數碼化這麼難？因為地盤數據是「碎」的，而且充滿了手寫字、泥水污漬。
@@ -252,12 +272,10 @@ export default async function BlogPost({ params }: Props) {
                   <ul className="space-y-4">
                     <li><strong>工紙 (Time Sheets)：</strong>判頭工人幾點開工、有無 OT？月底核對簡直是災難。</li>
                     <li><strong>收貨紙 (Delivery Notes)：</strong>英泥、石矢、鋼筋幾時到？有無簽名？文件往往在地盤傳閱中遺失。</li>
-                    <li><strong>Site Diary (地盤日誌)：</strong>今日天氣、工人人數、工序進度。往往要靠記憶力翻查 WhatsApp 群組來「作」一份。</li>
+                    <li><strong>Site Diary (地盤日誌)：</strong>今日天氣、工序進度。往往要靠記憶力翻查 WhatsApp 群組來「作」一份。</li>
                     <li><strong>巡查紀錄 (Safety/QA)：</strong>發現缺陷，影相後要返去寫字樓整理成報告，最怕老闆突然查返三個月前嘅相。</li>
                   </ul>
-
                   <h2 className="text-3xl font-bold text-slate-900 pt-8 border-t border-slate-100 italic">二、管工最頭痛的 5 個真實場景</h2>
-
                   <div className="bg-white rounded-3xl border border-slate-200 p-8 shadow-sm">
                     <h3 className="text-2xl font-bold text-slate-900 mb-6 flex items-center gap-3">
                       <CloudRain className="text-blue-600" /> 場景 1：落雨停工點 Claim 錢？
@@ -272,7 +290,6 @@ export default async function BlogPost({ params }: Props) {
                       </p>
                     </div>
                   </div>
-
                   <div className="bg-white rounded-3xl border border-slate-200 p-8 shadow-sm">
                     <h3 className="text-2xl font-bold text-slate-900 mb-6 flex items-center gap-3">
                       <History className="text-blue-600" /> 場景 2：找回「消失」的紀錄
@@ -299,7 +316,6 @@ export default async function BlogPost({ params }: Props) {
                       </p>
                     </div>
                   </div>
-
                   <div className="bg-white rounded-3xl border border-slate-200 p-8 shadow-sm">
                     <h3 className="text-2xl font-bold text-slate-900 mb-6 flex items-center gap-3">
                       <ShieldCheck className="text-blue-600" /> 場景 3：師傅有無跟圖則做？
@@ -314,7 +330,6 @@ export default async function BlogPost({ params }: Props) {
                       </p>
                     </div>
                   </div>
-
                   <div className="bg-white rounded-3xl border border-slate-200 p-8 shadow-sm">
                     <h3 className="text-2xl font-bold text-slate-900 mb-6 flex items-center gap-3">
                       <Search className="text-blue-600" /> 場景 4：出糧核對與延誤責任
@@ -329,7 +344,6 @@ export default async function BlogPost({ params }: Props) {
                       </p>
                     </div>
                   </div>
-
                   <div className="bg-white rounded-3xl border border-slate-200 p-8 shadow-sm">
                     <h3 className="text-2xl font-bold text-slate-900 mb-6 flex items-center gap-3">
                       <Mic className="text-blue-600" /> 場景 5：唔想打字，錄音得唔得？
@@ -344,9 +358,7 @@ export default async function BlogPost({ params }: Props) {
                       </p>
                     </div>
                   </div>
-
                   <h2 className="text-3xl font-bold text-slate-900 pt-8 border-t border-slate-100">三、工作流程深度對比</h2>
-                  
                   <div className="overflow-hidden rounded-[2rem] border border-slate-200 bg-slate-50 shadow-inner">
                     <div className="grid md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-slate-200">
                       <div className="p-8">
@@ -354,22 +366,19 @@ export default async function BlogPost({ params }: Props) {
                         <ul className="space-y-4 text-sm font-medium">
                           <li className="flex gap-2"><span className="text-red-500 text-lg">✗</span> 手寫登記，容易濕水損壞</li>
                           <li className="flex gap-2"><span className="text-red-500 text-lg">✗</span> 月底人手入 Excel，對數到凌晨</li>
-                          <li className="flex gap-2"><span className="text-red-500 text-lg">✗</span> 索償 (Claim) 證據散亂，難以追討</li>
                         </ul>
                       </div>
                       <div className="p-8 bg-white">
                         <h4 className="font-bold text-blue-600 uppercase tracking-widest mb-6 text-sm">現在 (WhatsApp 影相)</h4>
                         <ul className="space-y-4 text-sm font-medium">
-                          <li className="flex gap-2"><span className="text-blue-500 text-lg">!</span> 影相傳回公司，資料留在電話</li>
-                          <li className="flex gap-2"><span className="text-blue-500 text-lg">!</span> 文員依然要對住手機螢幕輸資料</li>
-                          <li className="flex gap-2"><span className="text-blue-500 text-lg">!</span> 訊息太多，三個月後一定搵唔返</li>
+                          <li className="flex gap-2"><span>!</span> 影相傳回公司，資料留在電話</li>
+                          <li className="flex gap-2"><span>!</span> 文員依然要對住手機螢幕輸資料</li>
                         </ul>
                       </div>
                       <div className="p-8 bg-blue-600 text-white">
                         <h4 className="font-bold text-blue-100 uppercase tracking-widest mb-6 text-sm">AI 協助 (Buildway 方案)</h4>
                         <ul className="space-y-4 text-sm font-medium">
                           <li className="flex gap-2"><span className="text-green-300 text-lg">✓</span> 影相即自動提取數據</li>
-                          <li className="flex gap-2"><span className="text-green-300 text-lg">✓</span> AI 自動與合約、天文台對比</li>
                           <li className="flex gap-2"><span className="text-green-300 text-lg">✓</span> 實時生成專業 PDF 報告</li>
                         </ul>
                       </div>
@@ -390,13 +399,10 @@ export default async function BlogPost({ params }: Props) {
                       </p>
                     </div>
                   </section>
-
                   <p>
                     我們訪談過超過 50 位不同行業的香港老闆，發現大家不約而同地面對同一個困境：生意做得愈大，行政雜務就愈多。原本應該去「搵生意」的時間，全部變成了「幫文員做野」。
                   </p>
-
                   <h2 className="text-3xl font-bold text-slate-900 pt-8 border-t border-slate-100">10 個正在燃燒您時間的行政場景</h2>
-
                   <div className="grid gap-6">
                     {[
                       { title: "對數 (Account Settlement)", icon: Calculator, desc: "以前要逐張單對住銀行 Statement 入數；現在文員影張相，AI 自動比對金額與對帳單，異常自動提醒。" },
@@ -421,9 +427,7 @@ export default async function BlogPost({ params }: Props) {
                       </div>
                     ))}
                   </div>
-
                   <h2 className="text-3xl font-bold text-slate-900 pt-8 border-t border-slate-100">深度流程解析：以前 vs 現在 vs AI 協助</h2>
-                  
                   <div className="overflow-hidden rounded-[2rem] border border-slate-200 bg-slate-50 shadow-inner">
                     <div className="grid md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-slate-200">
                       <div className="p-8">
@@ -439,7 +443,6 @@ export default async function BlogPost({ params }: Props) {
                         <ul className="space-y-4 text-sm font-medium">
                           <li className="flex gap-2"><span>1.</span> 員工拍照傳 WhatsApp</li>
                           <li className="flex gap-2"><span>2.</span> 文員對住手機看相片入 Excel</li>
-                          <li className="flex gap-2"><span>3.</span> 資料往往在中途遺失</li>
                         </ul>
                       </div>
                       <div className="p-8 bg-blue-600 text-white">
@@ -447,7 +450,6 @@ export default async function BlogPost({ params }: Props) {
                         <ul className="space-y-4 text-sm font-medium">
                           <li className="flex gap-2"><span>✓</span> 影相傳給 AI 助理</li>
                           <li className="flex gap-2"><span>✓</span> AI 秒讀數據並分類入帳</li>
-                          <li className="flex gap-2"><span>✓</span> 老闆 Dashboard 實時顯示開支</li>
                         </ul>
                       </div>
                     </div>
@@ -467,7 +469,6 @@ export default async function BlogPost({ params }: Props) {
                       這不是科幻小說，而是 Buildway Tech 正在為香港中小企落地的真實場景。想像一下，客戶拍下一個零件或一份手稿，您的 AI 助理能在 10 秒內給出專業回覆。
                     </p>
                   </section>
-
                   <h2 className="text-3xl font-bold text-slate-900 pt-8 border-t border-slate-100">一、實戰場景：從「相片」到「即時報價」</h2>
                   <div className="overflow-hidden rounded-[2rem] border border-slate-200 bg-slate-50 shadow-inner my-12">
                     <div className="grid md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-slate-200">
@@ -475,7 +476,6 @@ export default async function BlogPost({ params }: Props) {
                         <h4 className="font-bold text-slate-500 uppercase tracking-widest mb-6 text-sm">以前 (純人手)</h4>
                         <ul className="space-y-4 text-sm font-medium">
                           <li className="flex gap-2"><span className="text-red-500">✗</span> 文員收到相，唔識分型號</li>
-                          <li className="flex gap-2"><span className="text-red-500">✗</span> 傳給師傅，師傅忙緊未睇</li>
                           <li className="flex gap-2"><span className="text-red-500">✗</span> 4 小時後才回覆，客已找別家</li>
                         </ul>
                       </div>
@@ -484,20 +484,17 @@ export default async function BlogPost({ params }: Props) {
                         <ul className="space-y-4 text-sm font-medium">
                           <li className="flex gap-2"><span>!</span> 影相傳入公司群組</li>
                           <li className="flex gap-2"><span>!</span> 文員翻查舊 Excel 報價表</li>
-                          <li className="flex gap-2"><span>!</span> 1 小時後回覆，依然太慢</li>
                         </ul>
                       </div>
                       <div className="p-8 bg-blue-600 text-white">
                         <h4 className="font-bold text-blue-100 uppercase tracking-widest mb-6 text-sm">AI 自動化協助</h4>
                         <ul className="space-y-4 text-sm font-medium">
                           <li className="flex gap-2"><span className="text-green-300">✓</span> AI 自動辨識照片中零件型號</li>
-                          <li className="flex gap-2"><span className="text-green-300">✓</span> 自動連線公司庫存與成本庫</li>
                           <li className="flex gap-2"><span className="text-green-300">✓</span> 10 秒內草擬回覆，老闆只需確認</li>
                         </ul>
                       </div>
                     </div>
                   </div>
-
                   <h2 className="text-3xl font-bold text-slate-900 pt-8 border-t border-slate-100">二、背後的技術英雄 (老闆易明版)</h2>
                   <div className="grid gap-6 md:grid-cols-2">
                     <div className="p-8 rounded-3xl border border-slate-100 bg-white shadow-sm">
@@ -510,19 +507,8 @@ export default async function BlogPost({ params }: Props) {
                        <h4 className="text-xl font-bold text-slate-900 mb-2">CRM (記性最好的秘書)</h4>
                        <p className="text-slate-500">儲存所有客戶歷史。AI 會查返：「呢位客上次買左咩？有無特別折扣？」</p>
                     </div>
-                    <div className="p-8 rounded-3xl border border-slate-100 bg-white shadow-sm">
-                       <Link2 size={32} className="text-blue-600 mb-4" />
-                       <h4 className="text-xl font-bold text-slate-900 mb-2">MCP (萬能插頭)</h4>
-                       <p className="text-slate-500">橋樑技術，讓 AI 能夠即時查閱您的 Excel、庫存軟體或舊系統，唔使搬資料。</p>
-                    </div>
-                    <div className="p-8 rounded-3xl border border-slate-100 bg-white shadow-sm">
-                       <Cpu size={32} className="text-blue-600 mb-4" />
-                       <h4 className="text-xl font-bold text-slate-900 mb-2">AI Agent (全能助理)</h4>
-                       <p className="text-slate-500">大腦角色。它決定：先用 OCR 睇圖，再經 MCP 查庫存，最後在 WhatsApp 回覆。</p>
-                    </div>
                   </div>
-
-                  <h2 className="text-3xl font-bold text-slate-900 pt-8 border-t border-slate-100">三、真實 ROI 分析：這是一筆投資還是開支？</h2>
+                  <h2 className="text-3xl font-bold text-slate-900 pt-8 border-t border-slate-100">三、真實 ROI 分析</h2>
                   <div className="bg-slate-900 rounded-[2.5rem] p-10 text-white shadow-2xl relative overflow-hidden">
                     <div className="absolute inset-0 bg-tech-grid opacity-10" />
                     <div className="relative z-10 grid gap-12 md:grid-cols-2">
@@ -531,14 +517,12 @@ export default async function BlogPost({ params }: Props) {
                           <ul className="space-y-4 opacity-90 text-lg">
                              <li className="flex justify-between"><span>每日節省時間：</span> <span className="font-bold text-green-400">2.5 小時</span></li>
                              <li className="flex justify-between"><span>每月節省時間：</span> <span className="font-bold text-green-400">55 小時</span></li>
-                             <li className="flex justify-between"><span>人工成本估算：</span> <span className="font-bold text-green-400">HK$100 - $250 / hr</span></li>
                              <li className="flex justify-between"><span>每月隱形節省：</span> <span className="font-bold text-green-400">HK$5,500 - $13,750</span></li>
                           </ul>
                        </div>
                        <div className="p-8 rounded-3xl bg-white/10 border border-white/20 flex flex-col justify-center text-center">
                           <p className="text-blue-300 font-bold uppercase tracking-widest mb-4">Payback Period</p>
                           <p className="text-5xl font-extrabold mb-4">4 - 7 個月</p>
-                          <p className="text-lg opacity-80 font-medium italic">「不到半年，系統節省的人工與時間即可抵消開發成本。」</p>
                        </div>
                     </div>
                   </div>
@@ -556,19 +540,8 @@ export default async function BlogPost({ params }: Props) {
                     <p className="text-xl text-slate-600 leading-relaxed mb-8">
                       工程公司最值錢的不是圖紙，而是紀錄。但當老闆突然要查三年前某個地盤的關鍵資料時，往往是噩夢的開始。
                     </p>
-                    <div className="flex items-center gap-2 text-slate-500 font-medium italic border-l-4 border-blue-600 pl-4">
-                       「老陳，搵返三年前 X 項目果份防水測試報告出黎，客戶話而家漏水要我地孭旗。」
-                    </div>
                   </section>
-
-                  <p>
-                    這句話，相信很多工程界老闆、PM 甚至管工都聽過。問題通常不是我們沒有做那份文件，而是那份文件現在靜靜地躺在寫字樓某個角落的文件夾裡，或者埋藏在幾萬條 WhatsApp 紀錄的深處。
-                  </p>
-
                   <h2 className="text-3xl font-bold text-slate-900 pt-8 border-t border-slate-100">一、工程紀錄的「失蹤名單」</h2>
-                  <p>
-                    為什麼我們總是在找資料上浪費時間？因為一個工程涉及的紀錄實在太散：
-                  </p>
                   <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
                     {[
                       { title: "Site Instruction (SI)", icon: FileText },
@@ -589,99 +562,124 @@ export default async function BlogPost({ params }: Props) {
                       </div>
                     ))}
                   </div>
-
-                  <h2 className="text-3xl font-bold text-slate-900 pt-8 border-t border-slate-100">二、工作流程深度對比：搵資料的代價</h2>
-                  
+                  <h2 className="text-3xl font-bold text-slate-900 pt-8 border-t border-slate-100">二、工作流程深度對比</h2>
                   <div className="overflow-hidden rounded-[2rem] border border-slate-200 bg-slate-50 shadow-inner my-12">
                     <div className="grid md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-slate-200">
                       <div className="p-8">
                         <h4 className="font-bold text-slate-500 uppercase tracking-widest mb-6 text-sm">傳統做法 (憑記憶)</h4>
                         <ul className="space-y-4 text-sm font-medium">
                           <li className="flex gap-2"><span className="text-red-500">✗</span> 逐個櫃翻查紙本文件</li>
-                          <li className="flex gap-2"><span className="text-red-500">✗</span> 在 WhatsApp Search 關鍵字 (常因訊息太多而失靈)</li>
                           <li className="flex gap-2"><span className="text-red-500">✗</span> 耗時 2-3 天，甚至最後找不到</li>
                         </ul>
                       </div>
                       <div className="p-8 bg-white">
                         <h4 className="font-bold text-blue-600 uppercase tracking-widest mb-6 text-sm">初階數碼化 (雲端硬碟)</h4>
                         <ul className="space-y-4 text-sm font-medium">
-                          <li className="flex gap-2"><span>!</span> 檔案名格式不一</li>
-                          <li className="flex gap-2"><span>!</span> 影相文件名是「IMG_2021...」完全無法識別內容</li>
+                          <li className="flex gap-2"><span>!</span> 影相文件名是「IMG_2021...」</li>
                           <li className="flex gap-2"><span>!</span> 仍需逐個 Folder 點開來看</li>
                         </ul>
                       </div>
                       <div className="p-8 bg-blue-600 text-white">
                         <h4 className="font-bold text-blue-100 uppercase tracking-widest mb-6 text-sm">AI 增強 (Buildway 方案)</h4>
                         <ul className="space-y-4 text-sm font-medium">
-                          <li className="flex gap-2"><span className="text-green-300">✓</span> AI 自動理解 PDF、相片與對話內容</li>
-                          <li className="flex gap-2"><span className="text-green-300">✓</span> 語義搜尋：問 AI「搵返防水紀錄」即可找出所有相關相與報告</li>
-                          <li className="flex gap-2"><span className="text-green-300">✓</span> 30 秒內精確定位</li>
+                          <li className="flex gap-2"><span className="text-green-300">✓</span> 語義搜尋：30 秒內精確定位</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </>
+              )}
+
+              {slug === "hk-engineering-erp-chaos" && (
+                <>
+                  <section className="bg-slate-50 p-10 rounded-[3rem] border border-slate-200 relative overflow-hidden">
+                    <div className="absolute top-0 right-0 p-8 opacity-10">
+                      <FileWarning size={140} className="text-red-600" />
+                    </div>
+                    <p className="text-blue-600 font-bold uppercase tracking-widest mb-4">Strategic Insight</p>
+                    <h2 className="text-3xl font-bold text-slate-900 mb-6">「明明買咗 ERP，點解公司仲係咁亂？」</h2>
+                    <p className="text-xl text-slate-600 leading-relaxed">
+                      這是許多香港工程老闆的共同疑問。花了幾十萬甚至上百萬導入系統，員工依然在用 WhatsApp 對數，Excel 依然是主力，ERP 變成了「為了入數而錄入」的死帳簿。
+                    </p>
+                  </section>
+
+                  <p>
+                    工程行業的真實靈魂，往往不在 ERP 的「格仔」裡。一個 Variation Order (VO) 的產生，往往源於幾十條 WhatsApp 記錄、幾張工地照片和幾份現場簽署的收貨紙。傳統 ERP 要求的「結構化錄入」，在地盤前線簡直是反人類。
+                  </p>
+
+                  <h2 className="text-3xl font-bold text-slate-900 pt-8 border-t border-slate-100">一、Buildway Tech 的核心世界觀：數碼化四劍客</h2>
+                  <p>
+                    我們認為，工程公司不應該逼員工遷就系統，而應該讓系統具備人的理解力。以下是我們建議的四位一體架構：
+                  </p>
+
+                  <div className="grid gap-6 md:grid-cols-2">
+                    <div className="p-8 rounded-3xl border border-slate-100 bg-white shadow-sm">
+                       <Calculator size={32} className="text-blue-600 mb-4" />
+                       <h4 className="text-xl font-bold text-slate-900 mb-2">ERP = 帳簿 (The Ledger)</h4>
+                       <p className="text-slate-500">負責存儲最終、最正確的「錢與數」。它是公司的骨架，但不應是前線員工的錄入工具。</p>
+                    </div>
+                    <div className="p-8 rounded-3xl border border-slate-100 bg-white shadow-sm">
+                       <Database size={32} className="text-blue-600 mb-4" />
+                       <h4 className="text-xl font-bold text-slate-900 mb-2">RAG = 記憶 (The Memory)</h4>
+                       <p className="text-slate-500">負責處理「非結構化數據」。它能讀懂 SI、試壓報告、防水紀錄與 WhatsApp 歷史。它是公司的第二大腦。</p>
+                    </div>
+                    <div className="p-8 rounded-3xl border border-slate-100 bg-white shadow-sm">
+                       <Bot size={32} className="text-blue-600 mb-4" />
+                       <h4 className="text-xl font-bold text-slate-900 mb-2">AI Agent = 員工 (The Worker)</h4>
+                       <p className="text-slate-500">它是懂技術的秘書。老闆在 WhatsApp 下指令，Agent 去查 RAG 並寫入 ERP。它是真正的執行者。</p>
+                    </div>
+                    <div className="p-8 rounded-3xl border border-slate-100 bg-white shadow-sm">
+                       <Link2 size={32} className="text-blue-600 mb-4" />
+                       <h4 className="text-xl font-bold text-slate-900 mb-2">MCP = 橋樑 (The Bridge)</h4>
+                       <p className="text-slate-500">安全連接現有的舊 ERP 或 Excel，讓 AI 能夠即時「抓取」數據，無需大費周章搬遷系統。</p>
+                    </div>
+                  </div>
+
+                  <h2 className="text-3xl font-bold text-slate-900 pt-8 border-t border-slate-100">二、真實場景：處理一個爭議性的 VO</h2>
+                  <div className="overflow-hidden rounded-[2rem] border border-slate-200 bg-slate-50 shadow-inner my-12">
+                    <div className="grid md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-slate-200">
+                      <div className="p-8">
+                        <h4 className="font-bold text-red-600 uppercase tracking-widest mb-6 text-sm">傳統 ERP 做法</h4>
+                        <ul className="space-y-4 text-sm font-medium">
+                          <li className="flex gap-2"><span>1.</span> 管工需開電腦登入複雜介面</li>
+                          <li className="flex gap-2"><span>2.</span> 手動輸入 VO 原因、日期、金額</li>
+                          <li className="flex gap-2"><span>3.</span> 老闆事後難以核對 WhatsApp 原文</li>
+                        </ul>
+                      </div>
+                      <div className="p-8 bg-blue-600 text-white">
+                        <h4 className="font-bold text-blue-100 uppercase tracking-widest mb-6 text-sm">Buildway AI 建議架構</h4>
+                        <ul className="space-y-4 text-sm font-medium">
+                          <li className="flex gap-2"><span>✓</span> <strong>AI Agent</strong> 自動監測對話中提到的 VO</li>
+                          <li className="flex gap-2"><span>✓</span> 從 <strong>RAG</strong> 抓取相關的 SI 與現場照片</li>
+                          <li className="flex gap-2"><span>✓</span> 自動填好 <strong>ERP</strong> 草稿並在 WhatsApp 提醒老闆審核</li>
                         </ul>
                       </div>
                     </div>
                   </div>
 
-                  <h2 className="text-3xl font-bold text-slate-900 pt-8 border-t border-slate-100">三、AI 如何變回公司的「資產活字典」？</h2>
+                  <h2 className="text-3xl font-bold text-slate-900 pt-8 border-t border-slate-100">三、為什麼您需要這套架構？</h2>
                   <p>
-                    我們利用三項核心技術，解決「搵唔到資料」的問題：
+                    傳統 ERP 失敗的原因，是它試圖把「工程」變成「會計」。但成功的工程公司知道，核心價值在於對**變動（Variation）**的掌控。
                   </p>
-                  <div className="space-y-8">
-                    <div className="flex gap-6 items-start">
-                      <div className="h-12 w-12 shrink-0 rounded-2xl bg-blue-100 text-blue-600 flex items-center justify-center font-bold text-xl shadow-sm">1</div>
-                      <div>
-                        <h4 className="font-bold text-slate-900 text-xl mb-2">深度 OCR：讀懂每一張收貨紙與試壓報告</h4>
-                        <p className="text-lg">不只是掃描，而是提取。AI 會自動辨識文件中的「項目編號」、「分掛判商」、「批核日期」與「檢測結果」，並自動打標籤。</p>
-                      </div>
-                    </div>
-                    <div className="flex gap-6 items-start">
-                      <div className="h-12 w-12 shrink-0 rounded-2xl bg-blue-100 text-blue-600 flex items-center justify-center font-bold text-xl shadow-sm">2</div>
-                      <div>
-                        <h4 className="font-bold text-slate-900 text-xl mb-2">RAG 知識庫：賦予 AI 公司的專屬記憶</h4>
-                        <p className="text-lg">我们将公司歷年來的所有 Site Instruction、RFI、Method Statement 餵給 AI。當您問問題時，AI 會翻查這些真實紀錄來回答，並附上文件連結。</p>
-                      </div>
-                    </div>
-                    <div className="flex gap-6 items-start">
-                      <div className="h-12 w-12 shrink-0 rounded-2xl bg-blue-100 text-blue-600 flex items-center justify-center font-bold text-xl shadow-sm">3</div>
-                      <div>
-                        <h4 className="font-bold text-slate-900 text-xl mb-2">AI Agent：您的 24/7 資料管理員</h4>
-                        <p className="text-lg">Agent 會在背景工作：當 WhatsApp 群組傳來一張新的 Inspection Record 時，它自動將其分類、重命名並歸檔，確保系統永遠是最新的。</p>
-                      </div>
-                    </div>
-                  </div>
-
-                  <h2 className="text-3xl font-bold text-slate-900 pt-8 border-t border-slate-100">總結：紀錄是您應對爭議的唯一防盾</h2>
                   <p>
-                    工程界常說：「口講無憑，睇紀錄。」但如果紀錄找不回來，跟沒有紀錄其實沒有分別。將「死文件」活化成「隨時可查的知識資產」，是現代工程公司在激烈競爭中生存的唯一出路。
+                    透過 <strong>ERP + RAG + AI Agent</strong>，您可以保留現有的穩定帳系統，同時賦予公司處理碎片化資料的能力。
                   </p>
 
-                  <div className="bg-slate-900 rounded-[2.5rem] p-12 text-white my-20 text-center shadow-2xl relative overflow-hidden border border-white/10">
-                    <div className="absolute inset-0 bg-tech-grid opacity-20" />
+                  <div className="bg-slate-900 rounded-[3rem] p-12 text-white my-20 text-center shadow-2xl relative overflow-hidden">
+                    <div className="absolute inset-0 bg-tech-circuit opacity-10" />
                     <div className="relative z-10">
-                       <h3 className="text-3xl font-bold mb-6 text-white">想在 30 秒內搵返三年前的地盤資料？</h3>
-                       <p className="text-xl text-blue-100 mb-10 opacity-90">
-                         我們可以協助您將現有的舊硬碟、文件夾資料進行 AI 結構化處理。
+                       <h3 className="text-3xl font-bold mb-6 text-white">想拯救您「爛尾」的 ERP 系統嗎？</h3>
+                       <p className="text-xl text-blue-100 mb-10 opacity-90 leading-relaxed">
+                         我們專注於在現有架構上增加 AI 層，讓數據真正為老闆服務。
                        </p>
                        <div className="flex flex-col sm:flex-row justify-center gap-4">
                          <a href="/#assessment" className="rounded-full bg-blue-600 px-10 py-4 font-bold hover:bg-blue-700 transition shadow-xl">
-                           預約資料數碼化評估
+                           申請架構審核諮詢
                          </a>
                          <a href="https://wa.me/85212345678" className="rounded-full bg-white/10 px-10 py-4 font-bold border border-white/20 hover:bg-white/20 transition backdrop-blur-md flex items-center justify-center gap-2">
-                           <MessageSquare size={20} /> 直接諮詢顧問
+                           <MessageSquare size={20} /> 直接與顧問對話
                          </a>
                        </div>
-                    </div>
-                  </div>
-
-                  {/* FAQ Section */}
-                  <div className="space-y-8 pt-12 border-t border-slate-100">
-                    <h3 className="text-3xl font-bold text-slate-900">常見問題 (FAQ)</h3>
-                    <div className="grid gap-6">
-                       {faqDataMap["engineering-doc-automation"].map((f, i) => (
-                         <div key={i} className="p-8 rounded-3xl border border-slate-100 bg-slate-50">
-                            <h4 className="font-bold text-slate-900 mb-3 text-lg">Q: {f.question}</h4>
-                            <p>{f.answer}</p>
-                         </div>
-                       ))}
                     </div>
                   </div>
                 </>
@@ -717,3 +715,5 @@ export default async function BlogPost({ params }: Props) {
     </main>
   );
 }
+
+import { Bot } from "lucide-react";
