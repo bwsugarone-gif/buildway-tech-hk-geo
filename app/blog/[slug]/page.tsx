@@ -25,7 +25,12 @@ import {
   TrendingUp,
   Coins,
   Cpu,
-  Link2
+  Link2,
+  FileSearch,
+  HardHat,
+  FileWarning,
+  Box,
+  Image as ImageIcon
 } from "lucide-react";
 
 type Props = {
@@ -56,11 +61,12 @@ const blogData: Record<string, any> = {
     content: "分享室內設計與裝修工程如何整合歷史成本庫，利用 AI 助理快速生成專業初步報價單。",
   },
   "engineering-doc-automation": {
-    title: "工程公司文件管理自動化：從紙張到 AI 智能檢索的轉型路徑",
-    date: "2026-06-02",
+    title: "工程公司最值錢的不是圖紙，而是紀錄：有文件不代表搵得到",
+    date: "2026-06-16",
     author: "Buildway AI Team",
-    category: "實戰教學",
-    content: "探討地盤文件、合約與工紙如何透過 OCR 與 RAG 技術轉化為可搜尋、可分析的企業知識資產。",
+    category: "行業深度",
+    content: "為什麼工程公司總是找不到三年前的 SI 或 Lab Report？這篇文章探討如何利用 AI 建立公司的「第二大腦」，將塵封的文件變回有價值的資產。",
+    fullContent: true
   },
   "insurance-team-crm-compare": {
     title: "保險代理團隊 CRM 系統比較：為什麼通用型工具不再足夠？",
@@ -145,6 +151,16 @@ export default async function BlogPost({ params }: Props) {
       {
         question: "如果我的 CRM 是舊版系統，還能對接嗎？",
         answer: "這正是 MCP 技術的優勢。無論您的資料是在傳統資料庫、特定的 ERP 軟體還是多個 Excel 表格中，我們都能建立連接層，讓 AI 能夠即時調用這些數據。"
+      }
+    ],
+    "engineering-doc-automation": [
+      {
+        question: "掃描文件這麼多，AI 真的找得到嗎？",
+        answer: "AI 不只是做「關鍵字搜尋」。透過 RAG (檢索增強生成) 技術，AI 能理解您的意圖。即使您忘記了文件編號，只需問「上次 A1 倉漏水係點處理？」，AI 就能根據內容語義找出相關的 SI 與 Photo Record。"
+      },
+      {
+        question: "舊圖紙與手寫紀錄也能辨識嗎？",
+        answer: "是的。我們採用高精度的工程專用 OCR 模型，能辨識圖紙上的標註、蓋章，以及地盤巡查表上的手寫簽名與備註，將這些「死數據」激活成可搜尋的資產。"
       }
     ]
   };
@@ -453,10 +469,6 @@ export default async function BlogPost({ params }: Props) {
                   </section>
 
                   <h2 className="text-3xl font-bold text-slate-900 pt-8 border-t border-slate-100">一、實戰場景：從「相片」到「即時報價」</h2>
-                  <p>
-                    假設您經營一家維修工程公司。客戶傳來一張「壞了的冷氣機零件」照片，問：「有無呢隻料？幾錢？」
-                  </p>
-
                   <div className="overflow-hidden rounded-[2rem] border border-slate-200 bg-slate-50 shadow-inner my-12">
                     <div className="grid md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-slate-200">
                       <div className="p-8">
@@ -487,9 +499,6 @@ export default async function BlogPost({ params }: Props) {
                   </div>
 
                   <h2 className="text-3xl font-bold text-slate-900 pt-8 border-t border-slate-100">二、背後的技術英雄 (老闆易明版)</h2>
-                  <p>
-                    您不需要懂編程，但了解這五個角色能幫您更好地指揮 AI：
-                  </p>
                   <div className="grid gap-6 md:grid-cols-2">
                     <div className="p-8 rounded-3xl border border-slate-100 bg-white shadow-sm">
                        <Search size={32} className="text-blue-600 mb-4" />
@@ -514,9 +523,6 @@ export default async function BlogPost({ params }: Props) {
                   </div>
 
                   <h2 className="text-3xl font-bold text-slate-900 pt-8 border-t border-slate-100">三、真實 ROI 分析：這是一筆投資還是開支？</h2>
-                  <p>
-                    很多老闆擔心「高科技很貴」。但當我們計算完人工成本後，結論往往相反。
-                  </p>
                   <div className="bg-slate-900 rounded-[2.5rem] p-10 text-white shadow-2xl relative overflow-hidden">
                     <div className="absolute inset-0 bg-tech-grid opacity-10" />
                     <div className="relative z-10 grid gap-12 md:grid-cols-2">
@@ -536,25 +542,131 @@ export default async function BlogPost({ params }: Props) {
                        </div>
                     </div>
                   </div>
+                </>
+              )}
 
-                  <h2 className="text-3xl font-bold text-slate-900 pt-8 border-t border-slate-100">結論：給決策者的話</h2>
+              {slug === "engineering-doc-automation" && (
+                <>
+                  <section className="bg-slate-50 p-10 rounded-[2.5rem] border border-slate-200 relative overflow-hidden">
+                    <div className="absolute top-0 right-0 p-8 opacity-10">
+                      <FileSearch size={140} className="text-blue-600" />
+                    </div>
+                    <p className="text-blue-600 font-bold uppercase tracking-widest mb-4">Engineering Authority</p>
+                    <h2 className="text-3xl font-bold text-slate-900 mb-6">有文件，不代表搵得到</h2>
+                    <p className="text-xl text-slate-600 leading-relaxed mb-8">
+                      工程公司最值錢的不是圖紙，而是紀錄。但當老闆突然要查三年前某個地盤的關鍵資料時，往往是噩夢的開始。
+                    </p>
+                    <div className="flex items-center gap-2 text-slate-500 font-medium italic border-l-4 border-blue-600 pl-4">
+                       「老陳，搵返三年前 X 項目果份防水測試報告出黎，客戶話而家漏水要我地孭旗。」
+                    </div>
+                  </section>
+
                   <p>
-                    AI 自動化的真正價值，不在於取代您的員工，而是讓您的精英員工不再做「文員工作」。當您的響應速度從「小時」變為「秒」時，您的競爭對手已經不在同一個維度。
+                    這句話，相信很多工程界老闆、PM 甚至管工都聽過。問題通常不是我們沒有做那份文件，而是那份文件現在靜靜地躺在寫字樓某個角落的文件夾裡，或者埋藏在幾萬條 WhatsApp 紀錄的深處。
                   </p>
 
-                  <div className="bg-blue-600 rounded-[2.5rem] p-12 text-white my-20 text-center shadow-2xl relative overflow-hidden">
-                    <div className="absolute inset-0 bg-tech-circuit opacity-10" />
+                  <h2 className="text-3xl font-bold text-slate-900 pt-8 border-t border-slate-100">一、工程紀錄的「失蹤名單」</h2>
+                  <p>
+                    為什麼我們總是在找資料上浪費時間？因為一個工程涉及的紀錄實在太散：
+                  </p>
+                  <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                    {[
+                      { title: "Site Instruction (SI)", icon: FileText },
+                      { title: "RFI (諮詢便條)", icon: MessageSquare },
+                      { title: "Method Statement", icon: ShieldCheck },
+                      { title: "Material Submission", icon: Box },
+                      { title: "Shop Drawing", icon: Calculator },
+                      { title: "Inspection Record", icon: CheckCircle2 },
+                      { title: "Photo Record", icon: ImageIcon },
+                      { title: "Testing Report", icon: History },
+                      { title: "Lab Report (試壓報告)", icon: BarChart3 },
+                      { title: "Site Diary (地盤日誌)", icon: Clock },
+                      { title: "WhatsApp Record", icon: MessageSquare },
+                    ].map((doc, idx) => (
+                      <div key={idx} className="flex items-center gap-3 p-4 rounded-xl border border-slate-100 bg-white">
+                        <doc.icon size={18} className="text-blue-600" />
+                        <span className="font-bold text-slate-700 text-sm">{doc.title}</span>
+                      </div>
+                    ))}
+                  </div>
+
+                  <h2 className="text-3xl font-bold text-slate-900 pt-8 border-t border-slate-100">二、工作流程深度對比：搵資料的代價</h2>
+                  
+                  <div className="overflow-hidden rounded-[2rem] border border-slate-200 bg-slate-50 shadow-inner my-12">
+                    <div className="grid md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-slate-200">
+                      <div className="p-8">
+                        <h4 className="font-bold text-slate-500 uppercase tracking-widest mb-6 text-sm">傳統做法 (憑記憶)</h4>
+                        <ul className="space-y-4 text-sm font-medium">
+                          <li className="flex gap-2"><span className="text-red-500">✗</span> 逐個櫃翻查紙本文件</li>
+                          <li className="flex gap-2"><span className="text-red-500">✗</span> 在 WhatsApp Search 關鍵字 (常因訊息太多而失靈)</li>
+                          <li className="flex gap-2"><span className="text-red-500">✗</span> 耗時 2-3 天，甚至最後找不到</li>
+                        </ul>
+                      </div>
+                      <div className="p-8 bg-white">
+                        <h4 className="font-bold text-blue-600 uppercase tracking-widest mb-6 text-sm">初階數碼化 (雲端硬碟)</h4>
+                        <ul className="space-y-4 text-sm font-medium">
+                          <li className="flex gap-2"><span>!</span> 檔案名格式不一</li>
+                          <li className="flex gap-2"><span>!</span> 影相文件名是「IMG_2021...」完全無法識別內容</li>
+                          <li className="flex gap-2"><span>!</span> 仍需逐個 Folder 點開來看</li>
+                        </ul>
+                      </div>
+                      <div className="p-8 bg-blue-600 text-white">
+                        <h4 className="font-bold text-blue-100 uppercase tracking-widest mb-6 text-sm">AI 增強 (Buildway 方案)</h4>
+                        <ul className="space-y-4 text-sm font-medium">
+                          <li className="flex gap-2"><span className="text-green-300">✓</span> AI 自動理解 PDF、相片與對話內容</li>
+                          <li className="flex gap-2"><span className="text-green-300">✓</span> 語義搜尋：問 AI「搵返防水紀錄」即可找出所有相關相與報告</li>
+                          <li className="flex gap-2"><span className="text-green-300">✓</span> 30 秒內精確定位</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+
+                  <h2 className="text-3xl font-bold text-slate-900 pt-8 border-t border-slate-100">三、AI 如何變回公司的「資產活字典」？</h2>
+                  <p>
+                    我們利用三項核心技術，解決「搵唔到資料」的問題：
+                  </p>
+                  <div className="space-y-8">
+                    <div className="flex gap-6 items-start">
+                      <div className="h-12 w-12 shrink-0 rounded-2xl bg-blue-100 text-blue-600 flex items-center justify-center font-bold text-xl shadow-sm">1</div>
+                      <div>
+                        <h4 className="font-bold text-slate-900 text-xl mb-2">深度 OCR：讀懂每一張收貨紙與試壓報告</h4>
+                        <p className="text-lg">不只是掃描，而是提取。AI 會自動辨識文件中的「項目編號」、「分掛判商」、「批核日期」與「檢測結果」，並自動打標籤。</p>
+                      </div>
+                    </div>
+                    <div className="flex gap-6 items-start">
+                      <div className="h-12 w-12 shrink-0 rounded-2xl bg-blue-100 text-blue-600 flex items-center justify-center font-bold text-xl shadow-sm">2</div>
+                      <div>
+                        <h4 className="font-bold text-slate-900 text-xl mb-2">RAG 知識庫：賦予 AI 公司的專屬記憶</h4>
+                        <p className="text-lg">我们将公司歷年來的所有 Site Instruction、RFI、Method Statement 餵給 AI。當您問問題時，AI 會翻查這些真實紀錄來回答，並附上文件連結。</p>
+                      </div>
+                    </div>
+                    <div className="flex gap-6 items-start">
+                      <div className="h-12 w-12 shrink-0 rounded-2xl bg-blue-100 text-blue-600 flex items-center justify-center font-bold text-xl shadow-sm">3</div>
+                      <div>
+                        <h4 className="font-bold text-slate-900 text-xl mb-2">AI Agent：您的 24/7 資料管理員</h4>
+                        <p className="text-lg">Agent 會在背景工作：當 WhatsApp 群組傳來一張新的 Inspection Record 時，它自動將其分類、重命名並歸檔，確保系統永遠是最新的。</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <h2 className="text-3xl font-bold text-slate-900 pt-8 border-t border-slate-100">總結：紀錄是您應對爭議的唯一防盾</h2>
+                  <p>
+                    工程界常說：「口講無憑，睇紀錄。」但如果紀錄找不回來，跟沒有紀錄其實沒有分別。將「死文件」活化成「隨時可查的知識資產」，是現代工程公司在激烈競爭中生存的唯一出路。
+                  </p>
+
+                  <div className="bg-slate-900 rounded-[2.5rem] p-12 text-white my-20 text-center shadow-2xl relative overflow-hidden border border-white/10">
+                    <div className="absolute inset-0 bg-tech-grid opacity-20" />
                     <div className="relative z-10">
-                       <h3 className="text-3xl font-bold mb-6">想看這套系統如何應用在您的行業？</h3>
-                       <p className="text-xl mb-10 opacity-90">
-                         我們的顧問可以為您展示真實的「相片到對答」自動化流程。
+                       <h3 className="text-3xl font-bold mb-6 text-white">想在 30 秒內搵返三年前的地盤資料？</h3>
+                       <p className="text-xl text-blue-100 mb-10 opacity-90">
+                         我們可以協助您將現有的舊硬碟、文件夾資料進行 AI 結構化處理。
                        </p>
                        <div className="flex flex-col sm:flex-row justify-center gap-4">
-                         <a href="/#assessment" className="rounded-full bg-white text-blue-600 px-10 py-4 font-bold hover:bg-slate-100 transition shadow-xl">
-                           開始免費 ROI 評估
+                         <a href="/#assessment" className="rounded-full bg-blue-600 px-10 py-4 font-bold hover:bg-blue-700 transition shadow-xl">
+                           預約資料數碼化評估
                          </a>
-                         <a href="https://wa.me/85212345678" className="rounded-full bg-slate-900 px-10 py-4 font-bold transition hover:bg-slate-800 flex items-center justify-center gap-2">
-                           <MessageSquare size={20} /> 獲取方案細節
+                         <a href="https://wa.me/85212345678" className="rounded-full bg-white/10 px-10 py-4 font-bold border border-white/20 hover:bg-white/20 transition backdrop-blur-md flex items-center justify-center gap-2">
+                           <MessageSquare size={20} /> 直接諮詢顧問
                          </a>
                        </div>
                     </div>
@@ -564,7 +676,7 @@ export default async function BlogPost({ params }: Props) {
                   <div className="space-y-8 pt-12 border-t border-slate-100">
                     <h3 className="text-3xl font-bold text-slate-900">常見問題 (FAQ)</h3>
                     <div className="grid gap-6">
-                       {faqDataMap["whatsapp-crm-value"].map((f, i) => (
+                       {faqDataMap["engineering-doc-automation"].map((f, i) => (
                          <div key={i} className="p-8 rounded-3xl border border-slate-100 bg-slate-50">
                             <h4 className="font-bold text-slate-900 mb-3 text-lg">Q: {f.question}</h4>
                             <p>{f.answer}</p>
